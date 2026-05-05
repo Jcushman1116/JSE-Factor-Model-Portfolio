@@ -65,7 +65,7 @@ $$h^{JSE} = m(h)\mathbf{e} + c^{JSE}(h - m(h)\mathbf{e})$$
 
 where $m(h)$ is the mean entry of $h$, $\mathbf{e}$ is the vector of ones, and the shrinkage constant is:
 
-$$c^{JSE} = \max\!\left(0, 1 - \frac{\nu^2}{s^2(h)}\right)$$
+$$c^{JSE} = \max (0, 1 - \frac{\nu^2}{s^2(h)}\right)$$
 
 The JSE covariance estimate becomes:
 
