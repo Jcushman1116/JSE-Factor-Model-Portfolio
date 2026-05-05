@@ -39,7 +39,7 @@ $$\text{Market Cap} = \text{Closing Price} \times \text{Shares Outstanding}$$
 
 Weekly excess returns are computed by subtracting the weekly risk-free rate (sourced from a 6-month Treasury bond):
 
-$$E = R^T - r_{week}, \quad r_{week} = 0.0375 / 52$$
+$$E = R^T - r_{week} \quad r_{week} = 0.0375 / 52$$
 
 The de-meaned excess returns matrix $Y = E - \mu$ gives the sample covariance matrix:
 
@@ -47,9 +47,9 @@ $$S = \frac{YY^T}{n}$$
 
 ### 3. Single-Factor Market Model
 
-To resolve the singularity, we use a rank-regularized covariance estimate based on the leading eigenpair $(\lambda^2, h)$ of $S$:
+To resolve the singularity, we use a rank-regularized covariance estimate based on the leading eigenpair $(\lambda^2 h)$ of $S$:
 
-$$\Sigma_{\text{PCA}} = (\lambda^2 - \ell^2)\, hh^T + \frac{n}{p}\,\ell^2 I$$
+$$\Sigma_{\text{PCA}} = (\lambda^2 - \ell^2) hh^T + \frac{n}{p}\ell^2 I$$
 
 where:
 
@@ -61,7 +61,7 @@ The spectral shift by $\frac{n}{p}\ell^2$ lifts all zero eigenvalues, ensuring $
 
 The JSE improves on the PCA model by shrinking the leading eigenvector $h$ toward the equal-weighted direction:
 
-$$h^{JSE} = m(h)\,\mathbf{e} + c^{JSE}(h - m(h)\,\mathbf{e})$$
+$$h^{JSE} = m(h)\mathbf{e} + c^{JSE}(h - m(h)\mathbf{e})$$
 
 where $m(h)$ is the mean entry of $h$, $\mathbf{e}$ is the vector of ones, and the shrinkage constant is:
 
@@ -69,7 +69,7 @@ $$c^{JSE} = \max\!\left(0,\; 1 - \frac{\nu^2}{s^2(h)}\right)$$
 
 The JSE covariance estimate becomes:
 
-$$\Sigma_{JSE} = (\lambda^2 - \ell^2)\,\frac{h^{JSE}(h^{JSE})^T}{\|h^{JSE}\|^2} + \frac{n}{p}\,\ell^2 I$$
+$$\Sigma_{JSE} = (\lambda^2 - \ell^2) \frac{h^{JSE}(h^{JSE})^T}{\|h^{JSE}\|^2} + \frac{n}{p} \ell^2 I$$
 
 This is a **consistent estimator** in the asymptotic HDLSS regime — it pulls the sample eigenvector toward the true population eigenvector, filtering out market noise.
 
